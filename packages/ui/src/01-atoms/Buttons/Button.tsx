@@ -30,7 +30,8 @@ export const Button = ({
       className={clsx(
         "rounded-lg flex flex-row justify-center items-center",
         {
-          "bg-primary text-white": skin === "primary",
+          "bg-black dark:bg-white text-white dark:text-black":
+            skin === "primary",
         },
         sizes[size]
       )}

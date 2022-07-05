@@ -1,13 +1,11 @@
 import { GetStaticProps } from "next";
+import { Button } from "ui";
 
 import { getClient } from "../lib/sanity/sanity.server";
 import { settingsQuery } from "../lib/sanity/queries";
-import { Content } from "../components/Sanity";
 
-//TODO: fix typings for data maybe use generate sanity types
-export default function Index({ data }: any) {
-  const content = data?.settings.description;
-  return <section>{content && <Content blocks={content} />}</section>;
+export default function Index({}) {
+  return <section>Page not found 404</section>;
 }
 
 export const getStaticProps: GetStaticProps = async () => {

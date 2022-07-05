@@ -27,6 +27,12 @@ export default {
       fieldset: "restaurantInfo",
     },
     {
+      name: "facebookPage",
+      title: "Facebook page",
+      type: "url",
+      fieldset: "restaurantInfo",
+    },
+    {
       name: "phone",
       title: "Phonenumber",
       type: "string",

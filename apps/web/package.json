@@ -9,11 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@sanity/block-content-to-react": "^3.0.0",
+    "@sanity/image-url": "^1.0.1",
+    "clsx": "^1.2.0",
     "next": "12.0.8",
     "next-sanity": "^0.6.0",
     "next-sanity-image": "^3.2.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-icons": "^4.4.0",
     "ui": "*"
   },
   "devDependencies": {

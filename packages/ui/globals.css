@@ -6,3 +6,19 @@ html,
 body {
   @apply bg-mainBgColor dark:bg-black text-black dark:text-white;
 }
+
+ul {
+  list-style: disc;
+}
+
+h1 {
+  @apply text-5xl;
+}
+
+h2 {
+  @apply text-3xl;
+}
+
+h3 {
+  @apply text-xl;
+}
