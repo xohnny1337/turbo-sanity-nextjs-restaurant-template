@@ -10,7 +10,7 @@
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "sanity:start": "yarn workspace restaurant-template start",
-    "sanity:deploy": "cd apps/sanity && sanity deploy",
+    "sanity:deploy": "cd apps/studio && sanity deploy",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },

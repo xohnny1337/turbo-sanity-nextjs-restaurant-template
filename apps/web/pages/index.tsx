@@ -1,10 +1,11 @@
-import { Button } from "ui";
+import { GetStaticProps } from "next";
 
-export default function Web() {
-  return (
-    <div>
-      <h1>W awef feb</h1>
-      <Button />
-    </div>
-  );
+export default function Index() {
+  return <section>hello world</section>;
 }
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  return {
+    props: {},
+  };
+};
