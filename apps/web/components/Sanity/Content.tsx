@@ -5,6 +5,6 @@ export const Content = ({ blocks }: { blocks: any }) => (
   <BlockContent
     blocks={blocks}
     serializers={serializers}
-    className="space-y-6"
+    className="space-y-2"
   />
 );

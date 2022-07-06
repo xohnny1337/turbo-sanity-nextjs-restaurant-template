@@ -4,7 +4,19 @@ export default {
   name: "settings",
   title: "Settings",
   type: "document",
-  fieldsets: [{ name: "restaurantInfo", title: "Restaurant Info" }],
+  fieldsets: [
+    {
+      name: "restaurantInfo",
+      title: "Restaurant Info",
+    },
+    {
+      name: "additionalDescriptions",
+      title: "Additional descriptions",
+      options: {
+        collapsible: true,
+      },
+    },
+  ],
   fields: [
     {
       name: "name",
@@ -53,7 +65,12 @@ export default {
       type: "blockContent",
       fieldset: "restaurantInfo",
     },
-
+    {
+      name: "allergensInfo",
+      title: "Allergens Info",
+      type: "blockContent",
+      fieldset: "additionalDescriptions",
+    },
     {
       title: "Business hours",
       name: "openings",

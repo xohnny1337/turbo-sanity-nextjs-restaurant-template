@@ -11,7 +11,6 @@ export const serializers = {
         <Img
           {...imageProps}
           layout="intrinsic"
-          sizes="(max-width: 800px) 100vw, 800px"
           objectFit="cover"
           className="overflow-hidden rounded-lg"
         />

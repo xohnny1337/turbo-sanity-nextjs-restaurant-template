@@ -1,52 +1,45 @@
 import { GetStaticProps } from "next";
-import Img from "next/image";
+import { Accordion } from "ui";
+
 import { menuQuery, settingsQuery } from "../../lib/sanity/queries";
 import { getClient } from "../../lib/sanity/sanity.server";
-import { getNextImgFromSanitySrc } from "../../utils/sanity";
+
+import { Content } from "../../components/Sanity";
+import { ProductCard } from "../../components/ProductCard";
 
 export default function Web({ data }) {
   const menu = data?.menu;
-  return (
-    <section className="w-full">
-      <div className="space-y-10">
-        {menu.map((menuItem) => {
-          console.log({ menuItem });
-          return (
-            <div key={menuItem._id}>
-              <h2 className="mb-6">{menuItem.title}</h2>
-              <div className="space-y-4">
-                {menuItem.products.map((product) => {
-                  const headerLogo = getNextImgFromSanitySrc(
-                    product.productImage
-                  );
+  const allergensInfo = data?.settings?.allergensInfo;
 
-                  return (
-                    <div className="rounded-lg bg-white p-4 flex space-x-6">
-                      <div className="w-36 h-36 md:w-56 md:h-56 relative">
-                        <Img
-                          {...headerLogo}
-                          layout="fill"
-                          alt={product.title}
-                          objectFit="cover"
-                          className="overflow-hidden rounded-lg"
-                        />
-                      </div>
-                      <div className="flex flex-col flex-grow">
-                        <div className="flex justify-between items-center mb-4">
-                          <p className="font-medium"> {product.title}</p>{" "}
-                          <p>{product.price},-</p>
-                        </div>
-                        <span>{product.description}</span>
-                      </div>
-                    </div>
-                  );
-                })}
+  return (
+    <>
+      {allergensInfo && (
+        <section className="w-full mb-12">
+          <Content blocks={allergensInfo} />
+        </section>
+      )}
+
+      <section className="w-full">
+        <div className="space-y-10">
+          {menu.map((menuItem) => {
+            if (menuItem.products.length === 0) return null;
+
+            return (
+              <div key={menuItem._id}>
+                <Accordion title={menuItem.title}>
+                  <div className="grid grid-cols-12 gap-4">
+                    {menuItem.products.map((product) => {
+                      console.log({ product });
+                      return <ProductCard {...product} key={product._id} />;
+                    })}
+                  </div>
+                </Accordion>
               </div>
-            </div>
-          );
-        })}
-      </div>
-    </section>
+            );
+          })}
+        </div>
+      </section>
+    </>
   );
 }
 

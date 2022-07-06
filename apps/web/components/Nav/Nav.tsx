@@ -24,7 +24,7 @@ export const Nav = ({ title }: NavProps) => {
             </Link>
           </li>
           <li>
-            <Link href="/menu">
+            <Link href="/contact">
               <a>
                 <Button>Kontakt oss</Button>
               </a>
@@ -40,7 +40,7 @@ export const Nav = ({ title }: NavProps) => {
       </div>
       <div
         className={clsx(
-          "fixed top-0 left-0 right-0 bottom-0 z-10 h-full w-full bg-mainBgColor dark:bg-black  py-6 px-6 transition-transform",
+          "fixed top-0 left-0 right-0 bottom-0 z-20 h-full w-full bg-mainBgColor dark:bg-black  py-6 px-6 transition-transform",
           {
             "translate-x-full": !showDrawer,
           }
