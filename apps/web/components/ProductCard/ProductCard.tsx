@@ -60,9 +60,11 @@ export const ProductCard = ({
           <p className="text-sm mb-4">{description}</p>
         </div>
         <div className="flex justify-between">
-          <div className="text-xs pr-4">
-            Allergener: {allergens?.map((allergen) => allergen).join(", ")}
-          </div>
+          {allergens && allergens?.length > 0 && (
+            <div className="text-xs pr-4">
+              Allergener: {allergens?.map((allergen) => allergen).join(", ")}
+            </div>
+          )}
           <Price price={price} discount={discount} />
         </div>
       </div>
