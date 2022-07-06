@@ -23,9 +23,11 @@ export default function Index({ data }: any) {
         <h1 className="mb-4">Åpningstider</h1>
         <div className="space-y-4 relative">
           {openingHours.map((day) => {
-            console.log({ day });
             return (
-              <div className={clsx("grid grid-cols-4 md:grid-cols-12")}>
+              <div
+                key={day._key}
+                className={clsx("grid grid-cols-4 md:grid-cols-12")}
+              >
                 <h3 className="col-span-2">{daySanityMapper[day.day]}:</h3>
                 <h3 className="col-span-2">
                   {day.open ? (

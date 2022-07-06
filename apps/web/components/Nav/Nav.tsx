@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Button } from "ui";
 
 import { GiHamburgerMenu } from "react-icons/gi";
 import { CgClose } from "react-icons/cg";
 import clsx from "clsx";
+import { useRouter } from "next/router";
 
 interface NavProps {
   title: string;
@@ -12,6 +13,17 @@ interface NavProps {
 export const Nav = ({ title }: NavProps) => {
   const [showDrawer, setShowDrawer] = useState<boolean>(false);
 
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!showDrawer) return;
+
+    router.events.on("routeChangeComplete", () => setShowDrawer(false));
+
+    return () => {
+      router.events.off("routeChangeComplete", () => setShowDrawer(false));
+    };
+  }, [router.events, showDrawer]);
   return (
     <>
       <nav className="hidden md:block">
@@ -35,7 +47,7 @@ export const Nav = ({ title }: NavProps) => {
 
       <div className="block md:hidden">
         <button onClick={() => setShowDrawer(!showDrawer)}>
-          <GiHamburgerMenu />
+          <GiHamburgerMenu size="2rem" />
         </button>
       </div>
       <div
@@ -46,12 +58,20 @@ export const Nav = ({ title }: NavProps) => {
           }
         )}
       >
-        <div className="flex justify-between">
+        <div className="flex justify-between mb-12">
           <h1 className="text-lg font-medium">{title}</h1>
           <button onClick={() => setShowDrawer(!showDrawer)}>
-            <CgClose />
+            <CgClose size="2rem" />
           </button>
         </div>
+        <ul className="list-none space-y-6">
+          <li className="underline">
+            <Link href="/menu">Meny</Link>
+          </li>
+          <li className="underline">
+            <Link href="/contact">Kontakt oss</Link>
+          </li>
+        </ul>
       </div>
     </>
   );
