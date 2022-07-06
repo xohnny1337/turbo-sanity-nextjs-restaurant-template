@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Img from "next/image";
 import { getNextImgFromSanitySrc } from "../../utils/sanity";
+import { Button } from "ui";
 
 //TODO: Fix sanity typings
 export const serializers = {
@@ -14,6 +15,15 @@ export const serializers = {
           objectFit="cover"
           className="overflow-hidden rounded-lg"
         />
+      );
+    },
+    button: (props: any) => {
+      return (
+        <Link href={props.node.url} passHref>
+          <a className="inline-block">
+            <Button>{props.node.text}</Button>
+          </a>
+        </Link>
       );
     },
   },

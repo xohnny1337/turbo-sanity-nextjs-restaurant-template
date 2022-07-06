@@ -8,6 +8,7 @@ import settings from "./settings";
 
 //Elements
 import blockContent from "./elements/blockContent";
+import button from "./elements/button";
 
 export default createSchema({
   name: "default",
@@ -19,5 +20,6 @@ export default createSchema({
 
     //Elements
     blockContent,
+    button,
   ]),
 });

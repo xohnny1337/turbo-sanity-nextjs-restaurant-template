@@ -14,7 +14,7 @@ export const Header = ({ title, logo }: HeaderProps) => {
   const headerLogo = getNextImgFromSanitySrc(logo);
 
   return (
-    <header className="flex justify-between">
+    <header className="flex justify-between mb-24 md:mb-36">
       <Link href="/">
         <a>
           {headerLogo ? (
