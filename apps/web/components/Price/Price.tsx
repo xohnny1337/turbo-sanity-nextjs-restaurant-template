@@ -5,21 +5,23 @@ interface PriceProps {
   discount?: number;
 }
 
+function formatFiat(p: number): string {
+  return new Intl.NumberFormat(`nb-NO`, {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(p);
+}
+
 const getPriceFromDiscount = (
-  price: string,
+  price: number,
   discount: PriceProps["discount"]
 ) => {
   if (!discount) return price;
 
-  return price;
+  return price - (discount * Number(price.toFixed(2))) / 100;
 };
 
 export const Price = (props: PriceProps) => {
-  const price = new Intl.NumberFormat(`nb-NO`, {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  }).format(props.price);
-
   return (
     <span className="flex space-x-2 items-center md:items-end whitespace-nowrap text-sm">
       <p
@@ -27,9 +29,11 @@ export const Price = (props: PriceProps) => {
           "line-through text-xs md:text-sm": props.discount,
         })}
       >
-        {price}
+        {formatFiat(props.price)}
       </p>
-      {props.discount && <p>{getPriceFromDiscount(price, props.discount)}</p>}
+      {props.discount && (
+        <p>{formatFiat(getPriceFromDiscount(props.price, props.discount))}</p>
+      )}
       <p>NOK</p>
     </span>
   );

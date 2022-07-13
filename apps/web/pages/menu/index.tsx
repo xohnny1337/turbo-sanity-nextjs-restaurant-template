@@ -29,7 +29,6 @@ export default function Web({ data }) {
                 <Accordion title={menuItem.title}>
                   <div className="grid grid-cols-12 gap-4">
                     {menuItem.products.map((product) => {
-                      console.log({ product });
                       return <ProductCard {...product} key={product._id} />;
                     })}
                   </div>
