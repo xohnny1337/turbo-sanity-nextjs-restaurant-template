@@ -57,7 +57,7 @@ export const ProductCard = ({
       )}
       {currentVariation.productImage &&
         getNextImgFromSanitySrc(currentVariation.productImage) && (
-          <div className="col-span-12 md:col-span-3 h-28 relative">
+          <div className="col-span-12 md:col-span-3 md:h-28 h-40 relative">
             <Image
               src={getNextImgFromSanitySrc(currentVariation.productImage).src}
               loader={
